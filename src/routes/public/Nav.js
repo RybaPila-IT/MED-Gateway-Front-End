@@ -24,11 +24,11 @@ function Nav() {
                             <li className="nav-item">
                                 <Link className="nav-link" to={AbsolutePaths.register}> <FaUser /> Register</Link>
                             </li>
-
                         </ul>
                     </div>
                 </div>
             </nav>
+            {/** Outlet will display any page, at which the user is currently on. */}
             <Outlet />
         </div>
     )
