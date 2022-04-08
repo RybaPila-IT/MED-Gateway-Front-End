@@ -1,4 +1,4 @@
-# MED-Gateway Front End part
+# MED-Gateway Front End Project
 
 ---
 
