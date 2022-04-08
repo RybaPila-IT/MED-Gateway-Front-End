@@ -1,7 +1,101 @@
 import './Register.css'
-import {FaUser} from "react-icons/fa";
+import {FaUser} from 'react-icons/fa';
+import {useEffect, useState} from 'react';
+import {useRegisterUserMutation} from '../../api/backend';
 
 function Register() {
+
+    const passwordsMismatchErrorMessage = 'Provided passwords mismatch!';
+
+    const [register, {
+        data,
+        error,
+        isSuccess,
+        isError,
+        isLoading
+    }] = useRegisterUserMutation();
+
+    const [formData, setFormData] = useState({
+        name: '',
+        surname: '',
+        email: '',
+        organization: '',
+        password: '',
+        passwordRepeat: ''
+    });
+    const {
+        name,
+        surname,
+        email,
+        organization,
+        password,
+        passwordRepeat
+    } = formData;
+
+    const [isRegisterError, setIsRegisterError] = useState(false);
+    const [registerErrorMessage, setRegisterErrorMessage] = useState('');
+
+    const onChange = (e) => {
+        setFormData(prevState => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const clearRegistrationError = () => {
+        setRegisterErrorMessage('');
+        setIsRegisterError(false);
+    }
+
+    const setErrorMessage = (errorMessage) => {
+        setRegisterErrorMessage(errorMessage);
+        setIsRegisterError(true);
+        // Timeout for clearing the alert warning after some time.
+        setTimeout(() => {
+            clearRegistrationError();
+        }, 10000);
+    }
+
+    const submitRegisterRequest = (e) => {
+        e.preventDefault();
+        // We do not want to have obsolete alerts while making new request.
+        clearRegistrationError();
+        if (formData.password !== formData.passwordRepeat) {
+            return setErrorMessage(passwordsMismatchErrorMessage);
+        }
+        return register(formData);
+    }
+
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            surname: '',
+            email: '',
+            organization: '',
+            password: '',
+            passwordRepeat: ''
+        })
+    }
+
+    // This useEffect is responsible for setting the error message
+    // when the API call is made to the backend.
+    useEffect(() => {
+        if (!isError) {
+            return
+        }
+        if (error.data && error.data.message) {
+            return setErrorMessage(error.data.message);
+        }
+        if (error.data) {
+            return setErrorMessage(error.data);
+        }
+        if (error.error) {
+            return setErrorMessage(error.error);
+        }
+        return setErrorMessage(error.status);
+        // Not providing the setErrorMessage as the dependency.
+    }, [isError, error]) // eslint-disable-line react-hooks/exhaustive-deps
+
     return (
         <div>
             <section>
@@ -12,98 +106,105 @@ function Register() {
                     Please, fill below form in order to register
                 </p>
             </section>
-            <form className="form">
+            <form className="form" onSubmit={submitRegisterRequest} onReset={resetForm}>
                 <div className="form-group">
                     <div className="mb-3">
-                        <label
-                            htmlFor="nameFormInput"
-                            className="form-label">
-                            Your name
-                        </label>
                         <input
-                            id="nameFormInput"
+                            id="nameInput"
                             type="text"
                             className="form-control"
+                            onChange={onChange}
+                            required={true}
+                            name="name"
+                            value={name}
                             placeholder="Please, enter your name"/>
                     </div>
                     <div className="mb-3">
-                        <label
-                            htmlFor="surnameFormInput"
-                            className="form-label">
-                            Your surname
-                        </label>
                         <input
-                            id="surnameFormInput"
+                            id="surnameInput"
                             type="text"
                             className="form-control"
+                            onChange={onChange}
+                            required={true}
+                            name="surname"
+                            value={surname}
                             placeholder="Please, enter your surname"/>
                     </div>
                     <div className="mb-3">
-                        <label
-                            htmlFor="mailFormInput"
-                            className="form-label">
-                            Email address
-                        </label>
                         <input
                             id="mailFormInput"
                             type="email"
                             className="form-control"
-                            aria-describedby="emailInputDescription"
+                            onChange={onChange}
+                            required={true}
+                            name="email"
+                            value={email}
                             placeholder="Please, enter your email"/>
-                        <div
-                            id="emailInputDescription"
-                            className="form-text">
-                            We'll never share your email with anyone else.
-                        </div>
                     </div>
                     <div className="mb-3">
-                        <label
-                            htmlFor="organizationFormInput"
-                            className="form-label">
-                            Organization
-                        </label>
                         <input
-                            id="organizationFormInput"
+                            id="organizationInput"
                             type="text"
                             className="form-control"
-                            aria-describedby="organizationInputDescription"
+                            onChange={onChange}
+                            required={true}
+                            name="organization"
+                            value={organization}
                             placeholder="Please, enter your organization"/>
-                        <div
-                            id="organizationInputDescription"
-                            className="form-text">
-                            We would like to know which organization you represent.
-                        </div>
                     </div>
                     <div className="mb-3">
-                        <label
-                            htmlFor="passwordInput"
-                            className="form-label">
-                            Password
-                        </label>
                         <input
+                            id="passwordInput"
                             type="password"
                             className="form-control"
-                            id="passwordInput"
+                            onChange={onChange}
+                            required={true}
+                            minLength="5"
+                            name="password"
+                            value={password}
                             placeholder="Please, enter your password"/>
                     </div>
                     <div className="mb-3">
-                        <label
-                            htmlFor="passwordRepeatInput"
-                            className="form-label">
-                            Confirm your password
-                        </label>
                         <input
+                            id="passwordRepeatInput"
                             type="password"
                             className="form-control"
-                            id="passwordRepeatInput"
+                            onChange={onChange}
+                            required={true}
+                            minLength="5"
+                            name="passwordRepeat"
+                            value={passwordRepeat}
                             placeholder="Confirm password"/>
                     </div>
-                    <div className="btn-group" >
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                        <button type="submit" className="btn btn-secondary">Clear</button>
+                    <div className="btn-group">
+                        <button type="submit" className="btn btn-primary" disabled={isLoading}>Submit</button>
+                        <button type="reset" className="btn btn-secondary" disabled={isLoading}>Clear</button>
                     </div>
                 </div>
             </form>
+            <section>
+                <div className="alert-holder">
+                    {
+                        isRegisterError &&
+                        <div className="alert alert-danger" role="alert">
+                            {registerErrorMessage}
+                        </div>
+                    }
+                    {
+                        isLoading &&
+                        <div>
+                            <div className="spinner-border text-primary" role="status" />
+                            <span className="text-primary">Loading...</span>
+                        </div>
+                    }
+                    {
+                        isSuccess &&
+                        <div className="alert alert-success" role="alert">
+                            {`Successfully registered user. Generated id is ${data._id}`}
+                        </div>
+                    }
+                </div>
+            </section>
         </div>
     )
 }
