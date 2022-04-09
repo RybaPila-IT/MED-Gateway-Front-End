@@ -10,8 +10,18 @@ export const backendApi = createApi({
                 method: 'POST',
                 body: userData
             })
+        }),
+        loginUser: build.mutation({
+            query: (userData) => ({
+                url: '/users/login',
+                method: 'POST',
+                body: userData
+            })
         })
     })
 })
 
-export const {useRegisterUserMutation} = backendApi;
+export const {
+    useRegisterUserMutation,
+    useLoginUserMutation
+} = backendApi;
