@@ -1,10 +1,14 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useDispatch} from "react-redux";
+import {login} from '../../state/features/authorization'
 import {FaSignInAlt} from "react-icons/fa";
 import {useLoginUserMutation} from "../../api/backend";
 
 function Login() {
 
-    const [login, {
+    const dispatch = useDispatch();
+
+    const [makeLoginRequest, {
         data,
         error,
         isSuccess,
@@ -38,9 +42,61 @@ function Login() {
         })
     }
 
+    const clearLoginError = () => {
+        setLoginErrorMessage('');
+        setIsLoginError(false);
+    }
+
+    const setErrorMessage = (errorMessage) => {
+        setLoginErrorMessage(errorMessage);
+        setIsLoginError(true);
+        // Timeout for clearing the alert warning after some time.
+        setTimeout(() => {
+            clearLoginError();
+        }, 10000);
+    }
+
     const submitLoginRequest = (e) => {
         e.preventDefault();
+        clearLoginError();
+        return makeLoginRequest(formData);
     }
+
+    // This useEffect is responsible for setting the error message
+    // when the API call is made to the backend.
+    useEffect(() => {
+        if (!isError) {
+            return
+        }
+        if (error.data && error.data.message) {
+            return setErrorMessage(error.data.message);
+        }
+        if (error.data) {
+            return setErrorMessage(error.data);
+        }
+        if (error.error) {
+            return setErrorMessage(error.error);
+        }
+        return setErrorMessage(error.status);
+        // Not providing the setErrorMessage as the dependency.
+    }, [isError, error]) // eslint-disable-line react-hooks/exhaustive-deps
+
+
+    useEffect(() => {
+        const storeUserData = () => {
+            localStorage.setItem('user-data', JSON.stringify(data));
+        }
+        const dispatchLoginAction = () => {
+            dispatch(login(data));
+        }
+
+        if (!data || !isSuccess) {
+            return
+        }
+        storeUserData();
+        dispatchLoginAction();
+        // Not providing dispatch as the dependency.
+    }, [isSuccess, data]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>
@@ -101,7 +157,7 @@ function Login() {
                     {
                         isSuccess &&
                         <div className="alert alert-success" role="alert">
-                            {`Successfully registered user. Generated id is ${data._id}`}
+                            {`Successfully logged in.`}
                         </div>
                     }
                 </div>
