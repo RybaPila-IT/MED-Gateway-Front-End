@@ -1,13 +1,13 @@
 import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
-import {FaHome, FaSignInAlt, FaUser} from "react-icons/fa";
+import {FaSignOutAlt, FaChalkboard, FaHome} from "react-icons/fa";
 
-const PublicNav = () => {
+const ProtectedNav = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">MED-Gateway</a>
+                    <a className="navbar-brand" href="/auth">MED-Gateway</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -16,13 +16,13 @@ const PublicNav = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.home}> <FaHome /> Home</Link>
+                                <Link className="nav-link" to={AbsolutePaths.authenticatedHome}> <FaHome /> Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.login}> <FaSignInAlt /> Login</Link>
+                                <Link className="nav-link" to={AbsolutePaths.dashboard}> <FaChalkboard /> Dashboard </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.register}> <FaUser /> Register</Link>
+                                <Link className="nav-link" to={AbsolutePaths.logout}> <FaSignOutAlt /> Logout</Link>
                             </li>
                         </ul>
                     </div>
@@ -34,4 +34,4 @@ const PublicNav = () => {
     )
 }
 
-export default PublicNav;
+export default ProtectedNav

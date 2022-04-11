@@ -1,4 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {compareAsc} from "date-fns";
+
+export const userDataSessionKey = 'med-gateway-user-data';
 
 const createState = (_id = null, status = null, token = null) => ({
     user: {
@@ -9,12 +12,17 @@ const createState = (_id = null, status = null, token = null) => ({
 })
 
 const initialState = function () {
-    const storedUserData = localStorage.getItem('user-data');
+    const storedUserData = localStorage.getItem(userDataSessionKey);
     if (!storedUserData) {
         return createState();
     }
-    const {_id, status, token} = JSON.parse(storedUserData);
-    if (!_id || !status || !token) {
+    const {_id, status, token, expires} = JSON.parse(storedUserData);
+    if (!_id || !status || !token ||!expires) {
+        return createState();
+    }
+    // If the data stored in local storage is expired,
+    // we return empty state with user not being authenticated.
+    if (compareAsc(Date.parse(expires), Date.now()) !== 1) {
         return createState();
     }
     return createState(_id, status, token);
