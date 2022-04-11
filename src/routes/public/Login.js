@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {login, userDataSessionKey} from '../../state/features/authorization'
 import {FaSignInAlt} from "react-icons/fa";
 import {useLoginUserMutation} from "../../api/backend";
+import {AbsolutePaths} from "../Paths";
 
 function Login() {
 
@@ -97,7 +98,7 @@ function Login() {
             dispatch(login(data));
         }
         const navigateToProtectedHomePage = () => {
-            navigate('/auth/')
+            navigate(AbsolutePaths.authenticatedHome);
         }
 
         if (!data || !isSuccess) {
