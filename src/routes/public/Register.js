@@ -1,4 +1,3 @@
-import './Register.css'
 import {FaUser} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 import {useRegisterUserMutation} from '../../api/backend';
@@ -103,10 +102,10 @@ function Register() {
                     <FaUser/>Register
                 </h1>
                 <p>
-                    Please, fill below form in order to register
+                    Please, fill below form in order to register.
                 </p>
             </section>
-            <form className="form" onSubmit={submitRegisterRequest} onReset={resetForm}>
+            <form className="form centered-container" onSubmit={submitRegisterRequest} onReset={resetForm}>
                 <div className="form-group">
                     <div className="mb-3">
                         <input
@@ -177,13 +176,13 @@ function Register() {
                             placeholder="Confirm password"/>
                     </div>
                     <div className="btn-group">
-                        <button type="submit" className="btn btn-primary" disabled={isLoading}>Submit</button>
+                        <button type="submit" className="btn btn-primary" disabled={isLoading}>Register</button>
                         <button type="reset" className="btn btn-secondary" disabled={isLoading}>Clear</button>
                     </div>
                 </div>
             </form>
             <section>
-                <div className="alert-holder">
+                <div className="centered-container">
                     {
                         isRegisterError &&
                         <div className="alert alert-danger" role="alert">
@@ -200,7 +199,7 @@ function Register() {
                     {
                         isSuccess &&
                         <div className="alert alert-success" role="alert">
-                            {`Successfully registered user. Generated id is ${data._id}`}
+                            {`Successfully registered user. Generated id is ${data['_id']}`}
                         </div>
                     }
                 </div>
