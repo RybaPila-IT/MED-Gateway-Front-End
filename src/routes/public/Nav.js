@@ -2,7 +2,7 @@ import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
 import {FaHome, FaSignInAlt, FaUser} from "react-icons/fa";
 
-export const PublicNav = () => {
+const PublicNav = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,3 +33,5 @@ export const PublicNav = () => {
         </div>
     )
 }
+
+export default PublicNav;

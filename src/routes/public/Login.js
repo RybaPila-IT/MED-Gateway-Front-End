@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
+import {addHours} from "date-fns";
 import {useDispatch} from "react-redux";
-import {login} from '../../state/features/authorization'
+import {login, userDataSessionKey} from '../../state/features/authorization'
 import {FaSignInAlt} from "react-icons/fa";
 import {useLoginUserMutation} from "../../api/backend";
 
@@ -84,7 +85,11 @@ function Login() {
 
     useEffect(() => {
         const storeUserData = () => {
-            localStorage.setItem('user-data', JSON.stringify(data));
+            const dataWithExpirationDate = {
+                ...data,
+                'expires': addHours(Date.now(), 1),
+            }
+            localStorage.setItem(userDataSessionKey, JSON.stringify(dataWithExpirationDate));
         }
         const dispatchLoginAction = () => {
             dispatch(login(data));

@@ -1,13 +1,13 @@
 import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
-import {FaHome, FaSignOutAlt} from "react-icons/fa";
+import {FaSignOutAlt, FaChalkboard, FaHome} from "react-icons/fa";
 
-export const ProtectedNav = () => {
+const ProtectedNav = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">MED-Gateway Dashboard</a>
+                    <a className="navbar-brand" href="/auth">MED-Gateway</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -16,7 +16,10 @@ export const ProtectedNav = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.home}> <FaHome /> Home</Link>
+                                <Link className="nav-link" to={AbsolutePaths.authenticatedHome}> <FaHome /> Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to={AbsolutePaths.dashboard}> <FaChalkboard /> Dashboard </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={AbsolutePaths.logout}> <FaSignOutAlt /> Logout</Link>
@@ -30,3 +33,5 @@ export const ProtectedNav = () => {
         </div>
     )
 }
+
+export default ProtectedNav

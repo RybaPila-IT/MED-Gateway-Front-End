@@ -2,9 +2,10 @@ const AbsolutePaths = {
     home: '/',
     login: '/login',
     register: '/register',
-    authorized: '/authorized',
-    dashboard: '/authorized/dashboard',
-    logout: '/authorized/logout',
+    authenticated: '/auth',
+    authenticatedHome: '/auth',
+    dashboard: '/auth/dashboard',
+    logout: '/auth/logout',
     notFound: '*'
 }
 
@@ -12,7 +13,8 @@ const RelativePaths = {
     home: '/',
     login: 'login',
     register: 'register',
-    authorized: '/authorized',
+    authenticated: '/auth',
+    authenticatedHome: '',
     dashboard: 'dashboard',
     logout: 'logout',
     notFound: '*'
