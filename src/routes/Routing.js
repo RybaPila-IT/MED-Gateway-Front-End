@@ -3,13 +3,13 @@ import {RelativePaths} from "./Paths";
 import Home from './public/Home';
 import Login from "./public/Login";
 import Register from "./public/Register";
-import Nav from "./public/Nav";
-import NotFound from "./error/NotFound";
+import {PublicNav} from "./public/Nav";
+import {NotFound} from "./error/NotFound";
 
 export default function Routing() {
     return (
         <Routes>
-            <Route path={RelativePaths.home} element={<Nav />}>
+            <Route path={RelativePaths.home} element={<PublicNav />}>
                 <Route index element={<Home />} />
                 <Route path={RelativePaths.login} element={<Login />} />
                 <Route path={RelativePaths.register} element={<Register />} />

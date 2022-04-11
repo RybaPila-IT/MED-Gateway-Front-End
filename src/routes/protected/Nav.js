@@ -1,13 +1,13 @@
 import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
-import {FaHome, FaSignInAlt, FaUser} from "react-icons/fa";
+import {FaHome, FaSignOutAlt} from "react-icons/fa";
 
-export const PublicNav = () => {
+export const ProtectedNav = () => {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="/">MED-Gateway</a>
+                    <a className="navbar-brand" href="/">MED-Gateway Dashboard</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                             aria-label="Toggle navigation">
@@ -19,10 +19,7 @@ export const PublicNav = () => {
                                 <Link className="nav-link" to={AbsolutePaths.home}> <FaHome /> Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.login}> <FaSignInAlt /> Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.register}> <FaUser /> Register</Link>
+                                <Link className="nav-link" to={AbsolutePaths.logout}> <FaSignOutAlt /> Logout</Link>
                             </li>
                         </ul>
                     </div>
