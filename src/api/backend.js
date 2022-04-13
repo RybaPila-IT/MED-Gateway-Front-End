@@ -32,6 +32,12 @@ export const backendApi = createApi({
                 url: '/users/me',
                 method: 'GET',
             })
+        }),
+        getProductsSummary: build.query({
+            query: () => ({
+                url: '/products',
+                method: 'GET'
+            })
         })
     })
 })
@@ -39,5 +45,6 @@ export const backendApi = createApi({
 export const {
     useRegisterUserMutation,
     useLoginUserMutation,
-    useGetUserQuery
+    useGetUserQuery,
+    useGetProductsSummaryQuery
 } = backendApi;

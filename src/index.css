@@ -34,7 +34,13 @@ code {
   height: 18rem;
   border: 1px black solid;
   padding: 15px 10px 20px 10px;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
   border-radius: 7%;
+  box-shadow: 0.5rem 0.5rem 15px 4px darkgrey;
+}
+
+.product-card:hover {
   box-shadow: 0.5rem 0.5rem 15px 4px grey;
 }
 
