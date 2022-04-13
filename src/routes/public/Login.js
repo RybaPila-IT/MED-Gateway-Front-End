@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {Navigate, useNavigate} from "react-router-dom";
 import {addHours} from "date-fns";
 import {useDispatch, useSelector} from "react-redux";
-import {login, userDataSessionKey} from '../../state/features/authorization'
+import {login, userDataSessionKey} from '../../state/features/authentication'
 import {FaSignInAlt} from "react-icons/fa";
 import {useLoginUserMutation} from "../../api/backend";
 import {AbsolutePaths} from "../Paths";
