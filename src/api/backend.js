@@ -52,5 +52,6 @@ export const {
     useRegisterUserMutation,
     useLoginUserMutation,
     useGetUserQuery,
-    useGetProductsSummaryQuery
+    useGetProductsSummaryQuery,
+    useGetProductDetailsQuery
 } = backendApi;
