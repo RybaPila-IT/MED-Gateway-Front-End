@@ -28,3 +28,30 @@ code {
 .btn-group {
   display: flex;
 }
+
+.product-card {
+  width: 12rem;
+  height: 18rem;
+  border: 1px black solid;
+  padding: 15px 10px 20px 10px;
+  border-radius: 7%;
+  box-shadow: 0.5rem 0.5rem 15px 4px grey;
+}
+
+.product-img {
+  display: inline-block;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 2px black solid;
+}
+
+.product-title {
+  font-size: 1.5rem;
+  margin: 0.5rem auto;
+}
+
+.product-description {
+  font-size: 1rem;
+  text-align: center;
+}
