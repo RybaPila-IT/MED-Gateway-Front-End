@@ -2,7 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import {setupListeners} from "@reduxjs/toolkit/query";
 
 import {backendApi} from "../api/backend";
-import authenticationReducer from './features/authorization';
+import authenticationReducer from './features/authentication';
 
 export const store = configureStore({
     reducer: {
