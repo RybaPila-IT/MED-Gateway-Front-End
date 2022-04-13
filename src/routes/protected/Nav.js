@@ -1,6 +1,6 @@
 import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
-import {FaSignOutAlt, FaChalkboard, FaHome} from "react-icons/fa";
+import {FaSignOutAlt, FaColumns, FaHome} from "react-icons/fa";
 
 const ProtectedNav = () => {
     return (
@@ -19,7 +19,7 @@ const ProtectedNav = () => {
                                 <Link className="nav-link" to={AbsolutePaths.authenticatedHome}> <FaHome /> Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to={AbsolutePaths.dashboard}> <FaChalkboard /> Dashboard </Link>
+                                <Link className="nav-link" to={AbsolutePaths.products}> <FaColumns /> Products </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={AbsolutePaths.logout}> <FaSignOutAlt /> Logout</Link>

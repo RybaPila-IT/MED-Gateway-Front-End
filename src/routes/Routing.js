@@ -7,7 +7,7 @@ import PublicNav from "./public/Nav";
 import ProtectedNav from "./protected/Nav";
 import NotFound from "./error/NotFound";
 import ProtectedHome from './protected/Home';
-import Dashboard from "./protected/Dashboard";
+import Products from "./protected/Products";
 import Logout from "./protected/Logout";
 import ProtectedRoute from "./protected/ProtectedRoute";
 
@@ -24,7 +24,7 @@ export default function Routing() {
             <Route path={RelativePaths.authenticated} element={<ProtectedRoute />}>
                 <Route path={RelativePaths.authenticatedHome} element={<ProtectedNav />} >
                     <Route index element={<ProtectedHome />} />
-                    <Route path={RelativePaths.dashboard} element={<Dashboard />} />
+                    <Route path={RelativePaths.products} element={<Products />} />
                     <Route path={RelativePaths.logout} element={<Logout />} />
                 </Route>
             </Route>

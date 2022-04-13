@@ -4,7 +4,7 @@ const AbsolutePaths = {
     register: '/register',
     authenticated: '/auth',
     authenticatedHome: '/auth',
-    dashboard: '/auth/dashboard',
+    products: '/auth/products',
     logout: '/auth/logout',
     notFound: '*'
 }
@@ -15,7 +15,7 @@ const RelativePaths = {
     register: 'register',
     authenticated: '/auth',
     authenticatedHome: '',
-    dashboard: 'dashboard',
+    products: 'products',
     logout: 'logout',
     notFound: '*'
 }
