@@ -38,6 +38,12 @@ export const backendApi = createApi({
                 url: '/products',
                 method: 'GET'
             })
+        }),
+        getProductDetails: build.query({
+            query: (_id) => ({
+                url: `/products/${_id}`,
+                method: 'GET'
+            })
         })
     })
 })
