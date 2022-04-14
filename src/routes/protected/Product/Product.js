@@ -1,9 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {AbsolutePaths} from "../../Paths";
-import fetus_small from "../../../fetus_small.png";
+import cloudinary from "../../../api/cloudinary";
 
 const Product = ({product}) => {
 
+    const productImage = cloudinary.image(product.picture);
     const navigate = useNavigate();
 
     const redirectToProductDetails = () => {
@@ -12,7 +13,7 @@ const Product = ({product}) => {
 
     return (
         <div className="box-small">
-            <img className="image-small" src={fetus_small} alt="Small fetus"/>
+            <img className="image-small" src={productImage.toURL()} alt="Small fetus"/>
             <div className="title-small">
                 {product['name']}
             </div>

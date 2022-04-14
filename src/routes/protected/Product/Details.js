@@ -1,11 +1,13 @@
 import {useParams} from "react-router-dom";
 import {useGetProductDetailsQuery} from "../../../api/backend";
-import fetus from '../../../fetus.png';
+import cloudinary from "../../../api/cloudinary";
+
 
 const ProductDetails = () => {
 
     const {productId} = useParams();
     const {data, error, isSuccess, isLoading, isError} = useGetProductDetailsQuery(productId);
+    const sampleImage = isSuccess ? cloudinary.image(data.picture) : '';
 
     return (
         <div>
@@ -13,7 +15,7 @@ const ProductDetails = () => {
                 isSuccess &&
                 <div className="centered-container">
                     <div className="box-big">
-                        <img className="image-big" src={fetus} alt="Big fetus"/>
+                        <img className="image-big" src={sampleImage.toURL()} alt="Big fetus"/>
                         <div className="title-big">
                             {data.name}
                         </div>
@@ -34,6 +36,9 @@ const ProductDetails = () => {
                             </div>
                         </div>
                     </div>
+                    {/*<div>*/}
+                    {/*    <AdvancedImage cldImg={sampleImage} />*/}
+                    {/*</div>*/}
                 </div>
             }
             {
