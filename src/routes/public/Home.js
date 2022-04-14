@@ -6,7 +6,7 @@ function Home() {
             <div style={{width: '30%'}}>
                 <h1>MED-Gateway system</h1>
                 <p>
-                    As you might have already guess this page is under construction.
+                    As you might have already guessed this page is under construction.
                     Feel free to move around and use the system. The CSS styling and
                     visual design will be the last stage of the system implementation.
                 </p>

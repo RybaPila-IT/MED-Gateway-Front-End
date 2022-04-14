@@ -1,7 +1,7 @@
-import {useGetProductsSummaryQuery} from "../../api/backend";
+import {useGetProductsSummaryQuery} from "../../../api/backend";
 import Product from "./Product";
 
-const Products = () => {
+const ProductList = () => {
 
     const {data, error, isLoading, isSuccess, isError} = useGetProductsSummaryQuery();
 
@@ -29,4 +29,4 @@ const Products = () => {
     )
 }
 
-export default Products;
+export default ProductList;

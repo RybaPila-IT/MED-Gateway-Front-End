@@ -29,22 +29,38 @@ code {
   display: flex;
 }
 
-.product-card {
-  width: 12rem;
-  height: 18rem;
-  border: 1px black solid;
+/* Small elements styling. */
+
+.box-small {
+  width: 15rem;
+  height: 22rem;
   padding: 15px 10px 20px 10px;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
-  border-radius: 7%;
   box-shadow: 0.5rem 0.5rem 15px 4px darkgrey;
+  border: 1px black solid;
+  border-radius: 7%;
 }
 
-.product-card:hover {
+.box-small:hover {
   box-shadow: 0.5rem 0.5rem 15px 4px grey;
 }
 
-.product-img {
+.title-small {
+  font-size: 1.5rem;
+  margin: 0.5rem auto;
+}
+
+.description-small {
+  font-size: 1rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 13rem;
+  height: 4rem;
+}
+
+.image-small {
   display: inline-block;
   width: 8rem;
   height: 8rem;
@@ -52,12 +68,42 @@ code {
   border: 2px black solid;
 }
 
-.product-title {
-  font-size: 1.5rem;
+/* Big elements styling. */
+
+.box-big {
+  width: 45rem;
+  height: 40rem;
+  padding: 15px 10px 20px 10px;
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  box-shadow: 0.5rem 0.5rem 15px 4px darkgrey;
+  border: 1px black solid;
+  border-radius: 5%;
+}
+
+.box-big:hover {
+  box-shadow: 0.5rem 0.5rem 15px 4px grey;
+}
+
+.title-big {
+  font-size: 2rem;
   margin: 0.5rem auto;
 }
 
-.product-description {
+.description-big {
   font-size: 1rem;
   text-align: center;
+  margin: 0.5rem 1.5rem;
+}
+
+.aligned-left {
+  text-align: left;
+}
+
+.image-big {
+  display: inline-block;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  border: 2px black solid;
 }
