@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {AbsolutePaths} from "../../Paths";
-import fetus from "../../../fetus.png";
+import fetus_small from "../../../fetus_small.png";
 
 const Product = ({product}) => {
 
@@ -11,12 +11,12 @@ const Product = ({product}) => {
     }
 
     return (
-        <div className="product-card">
-            <img className="product-img" src={fetus} alt="Fetus"/>
-            <div className="product-title">
+        <div className="box-small">
+            <img className="image-small" src={fetus_small} alt="Small fetus"/>
+            <div className="title-small">
                 {product['name']}
             </div>
-            <div className="product-description">
+            <div className="description-small">
                 {product['short_description']}
             </div>
             <div className="btn-group" style={{marginTop: '2rem'}}>
