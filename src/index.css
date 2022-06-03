@@ -107,3 +107,21 @@ code {
   border-radius: 50%;
   border: 2px black solid;
 }
+
+.image-preview {
+  width: 20rem;
+  height: 20rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 3px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: grey;
+}
+
+.image-preview__image {
+  width: 100%;
+}
+

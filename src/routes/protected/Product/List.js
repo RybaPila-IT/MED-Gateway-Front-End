@@ -1,5 +1,5 @@
 import {useGetProductsSummaryQuery} from "../../../api/backend";
-import Product from "./Product";
+import ProductCard from "./Card";
 
 const ProductList = () => {
 
@@ -8,7 +8,7 @@ const ProductList = () => {
     return (
         <div className="centered-container">
             {isSuccess && data &&
-                data.map(product => <Product product={product} />)
+                data.map(product => <ProductCard key={product._id} product={product} />)
             }
             {
                 isError &&
