@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import {useSubmitPredictionDataMutation} from "../../../api/backend";
 import {useState} from "react";
 import encode from "../../../encoder/encoder";
+import PredictionEntry from "../Prediction/Entry";
 
 const Submit = () => {
     const productId = useParams();
@@ -143,16 +144,34 @@ const Submit = () => {
                     }
                     {
                         isSuccess &&
-                        <div>
-                            <img src={`data:image/png;base64, ${data.data['image_bytes']}`} alt="Prediction result"/>
-                            <div className="alert alert-secondary" role="alert">
-                                {data.data['body_part']}
-                            </div>
-                            <div className="alert alert-success" role="alert">
-                                {data.message}
+                        <button className="btn btn-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#prediction-modal">
+                            Show prediction result
+                        </button>
+                    }
+
+                    <div className="modal fade"
+                         id="prediction-modal"
+                         tabIndex="-1"
+                         aria-labelledby="modal-title"
+                         aria-hidden="true">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Prediction result</h5>
+                                    <button type="button" className="btn-close" aria-label="Close" data-bs-dismiss="modal" />
+                                </div>
+                                <div className="modal-body">
+                                    <PredictionEntry prediction={data ? data['prediction'] : ''}
+                                                     photoUrl={data ? data['url'] : ''}/>
+                                </div>
+                                <div className="modal-footer">
+                                    <button className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
-                    }
+                    </div>
                 </div>
             </section>
         </div>

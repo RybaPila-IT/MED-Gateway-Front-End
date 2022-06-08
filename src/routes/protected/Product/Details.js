@@ -1,10 +1,10 @@
 import {useParams} from "react-router-dom";
 import {useGetProductDetailsQuery} from "../../../api/backend";
+// TODO (radek.r) delete this redundant dependency of cloudinary and use only urls.
 import cloudinary from "../../../api/cloudinary";
 
 
 const ProductDetails = () => {
-
     const {productId} = useParams();
     const {data, error, isSuccess, isLoading, isError} = useGetProductDetailsQuery(productId);
     const sampleImage = isSuccess ? cloudinary.image(data.picture) : '';
