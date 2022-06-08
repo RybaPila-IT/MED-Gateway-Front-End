@@ -44,6 +44,13 @@ export const backendApi = createApi({
                 url: `/products/${_id}`,
                 method: 'GET'
             })
+        }),
+        submitPredictionData: build.mutation({
+            query: ({_id, data}) => ({
+                url: `/products/${_id}`,
+                method: 'POST',
+                body: data
+            })
         })
     })
 })
@@ -53,5 +60,6 @@ export const {
     useLoginUserMutation,
     useGetUserQuery,
     useGetProductsSummaryQuery,
-    useGetProductDetailsQuery
+    useGetProductDetailsQuery,
+    useSubmitPredictionDataMutation
 } = backendApi;

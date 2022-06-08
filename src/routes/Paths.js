@@ -6,6 +6,7 @@ const AbsolutePaths = {
     authenticatedHome: '/auth',
     products: '/auth/products',
     productDetails: '/auth/product/:productId',
+    submitPrediction: '/auth/product/:productId/submit',
     logout: '/auth/logout',
     notFound: '*'
 }
@@ -18,6 +19,7 @@ const RelativePaths = {
     authenticatedHome: '',
     products: 'products',
     productDetails: 'product/:productId',
+    submitPrediction: 'product/:productId/submit',
     logout: 'logout',
     notFound: '*'
 }

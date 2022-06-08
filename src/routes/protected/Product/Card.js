@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {AbsolutePaths} from "../../Paths";
 import cloudinary from "../../../api/cloudinary";
 
-const Product = ({product}) => {
+const ProductCard = ({product}) => {
 
     const productImage = cloudinary.image(product.picture);
     const navigate = useNavigate();
@@ -11,9 +11,13 @@ const Product = ({product}) => {
         navigate(AbsolutePaths.productDetails.replace(':productId', product._id));
     }
 
+    const redirectToSubmitForm = () => {
+        navigate(AbsolutePaths.submitPrediction.replace(':productId', product._id))
+    }
+
     return (
         <div className="box-small">
-            <img className="image-small" src={productImage.toURL()} alt="Small fetus"/>
+            <img className="image-small" src={productImage.toURL()} alt="Card logo"/>
             <div className="title-small">
                 {product['name']}
             </div>
@@ -24,7 +28,7 @@ const Product = ({product}) => {
                 <button className="btn btn-primary col-3" onClick={redirectToProductDetails}>
                     Info
                 </button>
-                <button className="btn btn-secondary col-3" disabled={true}>
+                <button className="btn btn-secondary col-3" onClick={redirectToSubmitForm}>
                     Use
                 </button>
                 <button className="btn btn-dark col-3" disabled={true}>
@@ -35,4 +39,4 @@ const Product = ({product}) => {
     )
 }
 
-export default Product;
+export default ProductCard;
