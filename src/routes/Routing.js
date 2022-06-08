@@ -12,17 +12,19 @@ import ProductDetails from "./protected/Product/Details";
 import Submit from './protected/Product/Submit'
 import Logout from "./protected/Logout";
 import ProtectedRoute from "./protected/ProtectedRoute";
+import HistoryList from "./protected/History/List";
 
 
 export default function Routing() {
     return (
         <Routes>
+            {/* Publicly available routes. */}
             <Route path={RelativePaths.home} element={<PublicNav />}>
                 <Route index element={<PublicHome />} />
                 <Route path={RelativePaths.login} element={<Login />} />
                 <Route path={RelativePaths.register} element={<Register />} />
             </Route>
-
+            {/* Start of the protected routes. */}
             <Route path={RelativePaths.authenticated} element={<ProtectedRoute />}>
                 <Route path={RelativePaths.authenticatedHome} element={<ProtectedNav />} >
                     <Route index element={<ProtectedHome />} />
@@ -30,9 +32,10 @@ export default function Routing() {
                     <Route path={RelativePaths.productDetails} element={<ProductDetails />} />
                     <Route path={RelativePaths.logout} element={<Logout />} />
                     <Route path={RelativePaths.submitPrediction} element={<Submit />} />
+                    <Route path={RelativePaths.productHistory} element={<HistoryList />} />
                 </Route>
             </Route>
-
+            {/* Page not found handler. */}
             <Route path={RelativePaths.notFound} element={<NotFound />} />
         </Routes>
     )

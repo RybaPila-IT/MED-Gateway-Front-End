@@ -12,7 +12,11 @@ const ProductCard = ({product}) => {
     }
 
     const redirectToSubmitForm = () => {
-        navigate(AbsolutePaths.submitPrediction.replace(':productId', product._id))
+        navigate(AbsolutePaths.submitPrediction.replace(':productId', product._id));
+    }
+
+    const redirectToProductHistory = () => {
+        navigate(AbsolutePaths.productHistory.replace(':productId', product._id));
     }
 
     return (
@@ -31,7 +35,7 @@ const ProductCard = ({product}) => {
                 <button className="btn btn-secondary col-3" onClick={redirectToSubmitForm}>
                     Use
                 </button>
-                <button className="btn btn-dark col-3" disabled={true}>
+                <button className="btn btn-dark col-3" onClick={redirectToProductHistory}>
                     History
                 </button>
             </div>
