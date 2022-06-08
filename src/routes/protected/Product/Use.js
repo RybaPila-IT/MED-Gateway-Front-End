@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {format} from "date-fns";
-import {useSubmitPredictionDataMutation} from "../../../api/backend";
 import {useState} from "react";
+import {useSubmitPredictionDataMutation} from "../../../api/backend";
 import encode from "../../../encoder/encoder";
 import PredictionEntry from "../Prediction/Entry";
 
