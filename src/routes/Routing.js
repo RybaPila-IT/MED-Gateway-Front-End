@@ -9,7 +9,7 @@ import NotFound from "./error/NotFound";
 import ProtectedHome from './protected/Home';
 import ProductList from "./protected/Product/List";
 import ProductDetails from "./protected/Product/Details";
-import Submit from './protected/Product/Submit'
+import UseProduct from './protected/Product/Use'
 import Logout from "./protected/Logout";
 import ProtectedRoute from "./protected/ProtectedRoute";
 import HistoryList from "./protected/History/List";
@@ -31,7 +31,7 @@ export default function Routing() {
                     <Route path={RelativePaths.products} element={<ProductList />} />
                     <Route path={RelativePaths.productDetails} element={<ProductDetails />} />
                     <Route path={RelativePaths.logout} element={<Logout />} />
-                    <Route path={RelativePaths.submitPrediction} element={<Submit />} />
+                    <Route path={RelativePaths.submitPrediction} element={<UseProduct />} />
                     <Route path={RelativePaths.productHistory} element={<HistoryList />} />
                 </Route>
             </Route>

@@ -51,6 +51,12 @@ export const backendApi = createApi({
                 method: 'POST',
                 body: data
             })
+        }),
+        getHistory: build.query({
+            query: _id => ({
+              url: `/history/${_id}`,
+              method: 'GET'
+            })
         })
     })
 })
@@ -61,5 +67,6 @@ export const {
     useGetUserQuery,
     useGetProductsSummaryQuery,
     useGetProductDetailsQuery,
-    useSubmitPredictionDataMutation
+    useSubmitPredictionDataMutation,
+    useGetHistoryQuery
 } = backendApi;
