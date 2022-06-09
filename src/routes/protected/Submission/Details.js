@@ -1,4 +1,11 @@
-const SubmissionDetails = ({patientName, patientSurname, date, description}) => {
+const SubmissionDetails = ({details}) => {
+
+    const {
+        patientName,
+        patientSurname,
+        date,
+        description
+    } = details;
 
     return (
         <>

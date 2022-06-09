@@ -1,4 +1,9 @@
-const PredictionEntry = ({photoUrl, prediction}) => {
+const PredictionEntry = ({details}) => {
+
+    const {
+        photoUrl,
+        prediction
+    } = details;
 
     return (
         <div>
