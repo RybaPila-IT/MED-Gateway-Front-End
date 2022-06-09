@@ -166,8 +166,11 @@ const UseProduct = () => {
                                     <button type="button" className="btn-close" aria-label="Close" data-bs-dismiss="modal" />
                                 </div>
                                 <div className="modal-body">
-                                    <PredictionEntry prediction={data ? data['prediction'] : ''}
-                                                     photoUrl={data ? data['url'] : ''}/>
+                                    {/* TODO (radek.r) Fix this mess. */}
+                                    <PredictionEntry details={{
+                                        photoUrl: data ? data['photo_url'] : '',
+                                        prediction: data ? data['prediction'] : ''
+                                    }} />
                                 </div>
                                 <div className="modal-footer">
                                     <button className="btn btn-danger" data-bs-dismiss="modal">Close</button>
