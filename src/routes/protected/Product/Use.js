@@ -1,10 +1,11 @@
 import {useParams} from "react-router-dom";
-import {useSubmitPredictionDataMutation} from "../../../api/backend";
+import {format} from "date-fns";
 import {useState} from "react";
+import {useSubmitPredictionDataMutation} from "../../../api/backend";
 import encode from "../../../encoder/encoder";
 import PredictionEntry from "../Prediction/Entry";
 
-const Submit = () => {
+const UseProduct = () => {
     const productId = useParams();
     const [makeSubmitRequest, {
         data,
@@ -31,14 +32,16 @@ const Submit = () => {
         // We do not want to clear the form.
         e.preventDefault()
 
+        const currentDate = format(new Date(), 'yyyy-MM-dd');
         const endpointId = productId['productId']
         const predictionData = {
-            'encoded': true,
-            'compression': 'lz',
-            'data': compressedImageBytes
+            encoded: true,
+            compression: 'lz',
+            data: compressedImageBytes
         }
         const requestData = {
-            'data': predictionData,
+            date: currentDate,
+            data: predictionData,
             ...formData
         }
 
@@ -179,4 +182,4 @@ const Submit = () => {
 
 }
 
-export default Submit;
+export default UseProduct;
