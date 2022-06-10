@@ -16,6 +16,7 @@ const Home = () => {
                         <li>Email: {data.email}</li>
                         <li>Identifier: {data._id}</li>
                         <li>Organization: {data.organization}</li>
+                        <li>Status: {data.status}</li>
                     </ul>
 
                 </div>

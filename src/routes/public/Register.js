@@ -1,6 +1,8 @@
 import {FaUser} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 import {useRegisterUserMutation} from '../../api/backend';
+import {Link} from "react-router-dom";
+import {AbsolutePaths} from "../Paths";
 
 function Register() {
 
@@ -202,6 +204,11 @@ function Register() {
                             {`Successfully registered user. Generated id is ${data['_id']}`}
                         </div>
                     }
+                </div>
+            </section>
+            <section>
+                <div>
+                    Your verification email didn't come? Go  <Link className="link" to={AbsolutePaths.verify}> here</Link> to resend it.
                 </div>
             </section>
         </div>

@@ -19,14 +19,14 @@ const UseProduct = () => {
         patient_name: '',
         patient_surname: '',
         description: ''
-    })
+    });
     const {
         patient_name,
         patient_surname,
         description
-    } = formData
+    } = formData;
 
-    const [compressedImageBytes, setCompressedImageBytes] = useState('')
+    const [compressedImageBytes, setCompressedImageBytes] = useState('');
 
     const submitPredictionRequest = (e) => {
         // We do not want to clear the form.

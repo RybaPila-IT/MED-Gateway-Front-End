@@ -57,6 +57,13 @@ export const backendApi = createApi({
               url: `/history/${_id}`,
               method: 'GET'
             })
+        }),
+        verifyAccount: build.mutation({
+            query: email => ({
+                url: '/verification/resubmit',
+                method: 'POST',
+                body: {email}
+            })
         })
     })
 })
@@ -68,5 +75,6 @@ export const {
     useGetProductsSummaryQuery,
     useGetProductDetailsQuery,
     useSubmitPredictionDataMutation,
-    useGetHistoryQuery
+    useGetHistoryQuery,
+    useVerifyAccountMutation
 } = backendApi;
