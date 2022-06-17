@@ -1,12 +1,12 @@
 import {useNavigate} from "react-router-dom";
 import {AbsolutePaths} from "../../Paths";
-import cloudinary from "../../../api/cloudinary";
 
 const ProductCard = ({product}) => {
 
-    const productImage = cloudinary.image(product.picture);
     const navigate = useNavigate();
-    const isActive = product['is_active']
+    const isActive = product['is_active'];
+    const productImgURL = product['photo_url'];
+
 
     const redirectToProductDetails = () => {
         navigate(AbsolutePaths.productDetails.replace(':productId', product._id));
@@ -22,7 +22,7 @@ const ProductCard = ({product}) => {
 
     return (
         <div className="box-small">
-            <img className="image-small" src={productImage.toURL()} alt="Card logo"/>
+            <img className="image-small" src={productImgURL} alt="Card logo"/>
             <div className="title-small">
                 {product['name']}
             </div>
