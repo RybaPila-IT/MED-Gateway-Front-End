@@ -6,6 +6,7 @@ const ProductCard = ({product}) => {
 
     const productImage = cloudinary.image(product.picture);
     const navigate = useNavigate();
+    const isActive = product['is_active']
 
     const redirectToProductDetails = () => {
         navigate(AbsolutePaths.productDetails.replace(':productId', product._id));
@@ -32,10 +33,10 @@ const ProductCard = ({product}) => {
                 <button className="btn btn-primary col-3" onClick={redirectToProductDetails}>
                     Info
                 </button>
-                <button className="btn btn-secondary col-3" onClick={redirectToSubmitForm}>
+                <button className="btn btn-secondary col-3" onClick={redirectToSubmitForm} disabled={!isActive}>
                     Use
                 </button>
-                <button className="btn btn-dark col-3" onClick={redirectToProductHistory}>
+                <button className="btn btn-dark col-3" onClick={redirectToProductHistory} disabled={!isActive}>
                     History
                 </button>
             </div>
