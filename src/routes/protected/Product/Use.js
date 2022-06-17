@@ -12,7 +12,8 @@ const UseProduct = () => {
         error,
         isSuccess,
         isError,
-        isLoading
+        isLoading,
+        isUninitialized
     }] = useSubmitPredictionDataMutation();
 
     const [formData, setFormData] = useState({
@@ -96,7 +97,8 @@ const UseProduct = () => {
                             name="patient_name"
                             value={patient_name}
                             required={true}
-                            onChange={handleFormChange}/>
+                            onChange={handleFormChange}
+                            contentEditable={isUninitialized}/>
                     </div>
                     <div className="mb-3">
                         <input
@@ -105,7 +107,8 @@ const UseProduct = () => {
                             name="patient_surname"
                             value={patient_surname}
                             required={true}
-                            onChange={handleFormChange}/>
+                            onChange={handleFormChange}
+                            contentEditable={isUninitialized}/>
                     </div>
                     <div className="mb-3">
                         <textarea
@@ -114,7 +117,8 @@ const UseProduct = () => {
                             name="description"
                             value={description}
                             required={true}
-                            onChange={handleFormChange}/>
+                            onChange={handleFormChange}
+                            contentEditable={isUninitialized}/>
                     </div>
                     <div className="mb-3">
                         <input
@@ -122,12 +126,15 @@ const UseProduct = () => {
                             accept="*/dicom,.dcm, image/dcm, */dcm, .dicom"
                             onChange={handleImageChange}
                             required={true}
+                            contentEditable={isUninitialized}
                         />
                     </div>
-                    <div className="btn-group">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                        <button type="reset" className="btn btn-secondary">Reset</button>
-                    </div>
+                    {isUninitialized &&
+                        <div className="btn-group">
+                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <button type="reset" className="btn btn-secondary">Reset</button>
+                        </div>
+                    }
                 </div>
             </form>
             <section>

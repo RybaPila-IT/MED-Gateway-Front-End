@@ -3,7 +3,7 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react';
 export const backendApi = createApi({
     reducerPath: 'backendApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:5000/api',
+        baseUrl: 'https://med-gateway-backend.herokuapp.com/api',
         prepareHeaders: (headers, {getState}) => {
             const {token} = getState().authentication;
             if (token) {
