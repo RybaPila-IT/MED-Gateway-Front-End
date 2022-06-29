@@ -62,7 +62,7 @@ const Verify = () => {
                     {
                         isError &&
                         <div className="alert alert-danger" role="alert">
-                            {JSON.stringify(error)}
+                            {error.data.message}
                         </div>
                     }
                     {
@@ -75,7 +75,7 @@ const Verify = () => {
                     {
                         isSuccess &&
                         <div className="alert alert-success" role="alert">
-                            {JSON.stringify(data)}
+                            {data.message}
                         </div>
                     }
                 </div>

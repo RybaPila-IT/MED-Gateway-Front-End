@@ -201,7 +201,7 @@ function Register() {
                     {
                         isSuccess &&
                         <div className="alert alert-success" role="alert">
-                            {`Successfully registered user. Generated id is ${data['_id']}`}
+                            {data.message}
                         </div>
                     }
                 </div>

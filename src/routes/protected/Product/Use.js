@@ -142,7 +142,7 @@ const UseProduct = () => {
                     {
                         isError &&
                         <div className="alert alert-danger" role="alert">
-                            {JSON.stringify(error)}
+                            {error.data.message}
                         </div>
                     }
                     {

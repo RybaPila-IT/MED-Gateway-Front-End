@@ -60,7 +60,7 @@ export const backendApi = createApi({
         }),
         verifyAccount: build.mutation({
             query: email => ({
-                url: '/verify/resend',
+                url: '/verify/send',
                 method: 'POST',
                 body: {email}
             })

@@ -3,11 +3,7 @@ import {compareAsc} from "date-fns";
 
 export const userDataSessionKey = 'med-gateway-user-data';
 
-const createState = (_id = null, status = null, token = null) => ({
-    user: {
-        _id,
-        status
-    },
+const createState = (token = null) => ({
     token
 })
 
@@ -16,8 +12,8 @@ const initialState = function () {
     if (!storedUserData) {
         return createState();
     }
-    const {_id, status, token, expires} = JSON.parse(storedUserData);
-    if (!_id || !status || !token ||!expires) {
+    const {token, expires} = JSON.parse(storedUserData);
+    if (!token ||!expires) {
         return createState();
     }
     // If the data stored in local storage is expired,
@@ -25,7 +21,7 @@ const initialState = function () {
     if (compareAsc(Date.parse(expires), Date.now()) !== 1) {
         return createState();
     }
-    return createState(_id, status, token);
+    return createState(token);
 }();
 
 const authenticationSlice = createSlice({
@@ -33,14 +29,10 @@ const authenticationSlice = createSlice({
     initialState,
     reducers: {
         login(state, action) {
-            const {_id, status, token} = action.payload;
-            state.user._id = _id;
-            state.user.status = status;
+            const {token} = action.payload;
             state.token = token;
         },
         logout(state) {
-            state.user._id = null;
-            state.user.status = null;
             state.token = null;
         }
     }
