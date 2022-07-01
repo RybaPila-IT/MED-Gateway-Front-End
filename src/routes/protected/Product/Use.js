@@ -35,14 +35,15 @@ const UseProduct = () => {
 
         const currentDate = format(new Date(), 'yyyy-MM-dd');
         const endpointId = productId['productId']
-        const predictionData = {
+        // This request will be passed to the DICOM Converter Service.
+        const dicomData = {
             encoded: true,
             compression: 'lz',
-            data: compressedImageBytes
+            image: compressedImageBytes
         }
         const requestData = {
             date: currentDate,
-            data: predictionData,
+            dicom_data: dicomData,
             ...formData
         }
 
@@ -142,7 +143,7 @@ const UseProduct = () => {
                     {
                         isError &&
                         <div className="alert alert-danger" role="alert">
-                            {error.data.message}
+                            {error.data ? error.data.message : JSON.stringify(error)}
                         </div>
                     }
                     {
