@@ -120,7 +120,7 @@ function Login() {
     return authenticated ?
         <Navigate to={'/auth'}/> :
         (<div>
-                <section>
+                <section className="centered-container" style={{display: 'flex', alignItems: 'center'}}>
                     <h1>
                         <FaSignInAlt/>Login
                     </h1>

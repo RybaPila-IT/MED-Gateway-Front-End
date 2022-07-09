@@ -6,7 +6,7 @@ import Particles from "./routes/public/Particles";
 function App() {
 
     return (
-        <div className="App">
+        <div className="main-container">
             <Particles />
             <Routing/>
         </div>
