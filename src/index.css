@@ -102,11 +102,50 @@ code {
     height: 100%;
 }
 
+.half-container {
+    width: 100%;
+    height: auto;
+}
+
+.transparent-black-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.transparent-white-bg {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.centered {
+    padding: 3rem;
+}
+
+.centered-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-centered {
+    padding: 6rem 3rem;
+}
+
+.white-text {
+    color: white;
+}
+
+.black-text {
+    color: black;
+}
+
 .top-margin-container {
-    margin-top: 30rem;
+    margin-top: 20rem;
 }
 
 
+.small-logo {
+    width: 12rem;
+    height: 100%;
+}
 
 
 
@@ -124,8 +163,7 @@ code {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 3rem;
 }
 
 .btn-group {

@@ -1,7 +1,7 @@
 import {Link, Outlet} from 'react-router-dom';
 import {AbsolutePaths} from "../Paths";
 import DarkBlueLogoWithCaption from "../../assets/DarkBlueLogoWithCaption.png";
-
+import Footer from "./Footer";
 
 const PublicNav = () => {
     return (
@@ -29,6 +29,7 @@ const PublicNav = () => {
             {/*        </div>*/}
             {/*    </div>*/}
             {/*</nav>*/}
+            <div className="main-container">
             <nav className="nav">
                 <div className="container">
                     <div className="logo">
@@ -53,15 +54,13 @@ const PublicNav = () => {
                             </li>
                         </ul>
                     </div>
-                    <span className="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
                 </div>
             </nav>
+            </div>
             {/** Outlet will display any page, at which the user is currently on. */}
             <Outlet/>
+            {/** We also include footer for the webpage. */}
+            <Footer />
         </div>
     )
 }
