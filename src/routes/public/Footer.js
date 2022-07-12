@@ -5,48 +5,54 @@ import {AbsolutePaths} from "../Paths";
 function Footer() {
     return (
         <>
-            <div className="centered-container transparent-black-bg">
-                <div className="row full-container centered-2">
+            <div className="footer__top black--background">
+                <div className="row footer__row">
                     <div className="col-4 d-flex justify-content-center">
                         <div>
-                            <img className="small-logo" src={WhiteLogoWithCaption} alt="MED-Gateway white logo"/>
+                            <img className="footer__img" src={WhiteLogoWithCaption} alt="MED-Gateway white logo"/>
                         </div>
                     </div>
                     <div className="col-4 d-flex justify-content-center">
-                        <div className="col-2 d-flex flex-column align-items-center">
-                            <div className="full-container">
+                        <div className="col-1 d-flex flex-column align-items-center">
+                            <div className="footer__col__div">
                                 <b>Browse</b>
                             </div>
-                            <div className="full-container white-text" style={{float: 'left'}}>
-                                <Link className="white-text" to={AbsolutePaths.home} style={{textDecoration: 'none'}}>Home</Link>
+                            <div className="footer__col__div">
+                                <Link className="footer--white-text no-decoration" to={AbsolutePaths.home}>
+                                    Home
+                                </Link>
                             </div>
-                            <div className="full-container white-text">
-                                <Link className="white-text" to={AbsolutePaths.register} style={{textDecoration: 'none'}}>Register</Link>
+                            <div className="footer__col__div">
+                                <Link className="footer--white-text no-decoration" to={AbsolutePaths.register}>
+                                    Register
+                                </Link>
                             </div>
-                            <div className="full-container white-text">
-                                <Link className="white-text" to={AbsolutePaths.login} style={{textDecoration: 'none'}}>Login</Link>
+                            <div className="footer__col__div">
+                                <Link className="footer--white-text no-decoration" to={AbsolutePaths.login}>
+                                    Login
+                                </Link>
                             </div>
                         </div>
                     </div>
                     <div className="col-4 d-flex justify-content-end">
                         <div className="col-8 d-flex flex-column align-items-end">
-                            <div className="full-container">
+                            <div className="footer__col__div">
                                 <b>Contact</b>
                             </div>
-                            <div className="full-container white-text">
+                            <div className="footer__col__div footer--white-text">
                                 +693 170 273
                             </div>
-                            <div className="full-container white-text">
+                            <div className="footer__col__div footer--white-text">
                                 med-gateway@outlook.com
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="centered-2" style={{borderTop: '0.13rem solid black'}}>
-                <div className="row full-container justify-content-center transparent-black-bg">
-                    <div className="col-4 d-flex justify-content-center">
-                        Copyright 2022
+            <div className="footer__copyright black--background">
+                <div className="row footer__row justify-content-center">
+                    <div className="col-6 d-flex justify-content-center">
+                        <b>Copyright 2022</b>
                     </div>
                 </div>
             </div>

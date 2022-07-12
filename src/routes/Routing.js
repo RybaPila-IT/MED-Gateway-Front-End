@@ -3,7 +3,7 @@ import {RelativePaths} from "./Paths";
 import PublicHome from './public/Home';
 import Login from "./public/Login";
 import Register from "./public/Register";
-import PublicNav from "./public/Nav";
+import PublicLayout from "./public/Layout";
 import ProtectedNav from "./protected/Nav";
 import NotFound from "./error/NotFound";
 import ProtectedHome from './protected/Home';
@@ -19,25 +19,25 @@ export default function Routing() {
     return (
         <Routes>
             {/* Publicly available routes. */}
-            <Route path={RelativePaths.home} element={<PublicNav />}>
-                <Route index element={<PublicHome />} />
-                <Route path={RelativePaths.login} element={<Login />} />
-                <Route path={RelativePaths.register} element={<Register />} />
-                <Route path={RelativePaths.verify} element={<Verify />} />
+            <Route path={RelativePaths.home} element={<PublicLayout/>}>
+                <Route index element={<PublicHome/>}/>
+                <Route path={RelativePaths.login} element={<Login/>}/>
+                <Route path={RelativePaths.register} element={<Register/>}/>
+                <Route path={RelativePaths.verify} element={<Verify/>}/>
             </Route>
             {/* Start of the protected routes. */}
-            <Route path={RelativePaths.authenticated} element={<ProtectedRoute />}>
-                <Route path={RelativePaths.authenticatedHome} element={<ProtectedNav />} >
-                    <Route index element={<ProtectedHome />} />
-                    <Route path={RelativePaths.products} element={<ProductList />} />
-                    <Route path={RelativePaths.productDetails} element={<ProductDetails />} />
-                    <Route path={RelativePaths.logout} element={<Logout />} />
-                    <Route path={RelativePaths.submitPrediction} element={<UseProduct />} />
-                    <Route path={RelativePaths.productHistory} element={<HistoryList />} />
+            <Route path={RelativePaths.authenticated} element={<ProtectedRoute/>}>
+                <Route path={RelativePaths.authenticatedHome} element={<ProtectedNav/>}>
+                    <Route index element={<ProtectedHome/>}/>
+                    <Route path={RelativePaths.products} element={<ProductList/>}/>
+                    <Route path={RelativePaths.productDetails} element={<ProductDetails/>}/>
+                    <Route path={RelativePaths.logout} element={<Logout/>}/>
+                    <Route path={RelativePaths.submitPrediction} element={<UseProduct/>}/>
+                    <Route path={RelativePaths.productHistory} element={<HistoryList/>}/>
                 </Route>
             </Route>
             {/* Page not found handler. */}
-            <Route path={RelativePaths.notFound} element={<NotFound />} />
+            <Route path={RelativePaths.notFound} element={<NotFound/>}/>
         </Routes>
     )
 }

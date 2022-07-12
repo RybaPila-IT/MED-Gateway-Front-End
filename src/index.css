@@ -13,12 +13,23 @@ code {
 }
 
 /**
-  Main container used for centering public page.
+  Main padding class used for centering public page.
 */
-.main-container {
+.main-padded {
     padding-left: 15rem;
     padding-right: 15rem;
     padding-top: 1rem;
+}
+
+/**
+    Class used for changing react Links design.
+ */
+.no-decoration {
+    text-decoration: none;
+}
+
+.no-decoration:hover {
+    color: currentColor;
 }
 
 /**
@@ -30,30 +41,30 @@ code {
     text-align: center;
 }
 
-.nav div.logo {
+.nav__logo {
     float: left;
     width: auto;
     height: 8rem;
 }
 
-.nav div.logo img {
+.nav__logo__img {
     height: 100%;
     width: auto;
 }
 
-.nav div.main_list {
+.nav__list {
     height: 100%;
     float: right;
 }
 
-.nav div.main_list ul {
+.nav__list__ul {
     width: 100%;
     height: 100%;
     display: flex;
     list-style: none;
 }
 
-.nav div.main_list ul li {
+.nav__list__li {
     width: 100%;
     height: 100%;
     margin-left: 1.2rem;
@@ -62,11 +73,7 @@ code {
     justify-content: center;
 }
 
-.nav div.main_list ul li a {
-    text-decoration: none;
-}
-
-.nav div.main_list ul li button {
+.nav__list__button {
     width: 10rem;
     height: 3.7rem;
     text-decoration: none;
@@ -78,7 +85,7 @@ code {
     font-size: 1.5rem;
 }
 
-.nav div.main_list ul li button:hover {
+.nav__list__button:hover {
     background-color: #ffffff;
     color: #000000;
 }
@@ -86,71 +93,92 @@ code {
 /**
     Classes associated with main page section.
  */
-
-.carousel-img {
+.carousel__img {
     width: 100%;
     height: auto;
     object-fit: fill;
 }
 
-.with-shadow {
+.carousel--shadow {
     box-shadow: 1rem 1rem 200px 2px black;
 }
 
-.full-container {
+.preview {
+    margin-top: 20rem;
     width: 100%;
     height: 100%;
 }
 
-.half-container {
+.preview__img {
+    padding: 3rem;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
-.transparent-black-bg {
+.preview__text {
+    padding: 6rem 3rem 6rem 3rem;
+}
+
+.preview__text__header {
+    font-size: 3rem;
+}
+
+.preview--white-text {
+    color: white;
+}
+
+.preview--black-text {
+    color: black;
+}
+
+.black--background {
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.transparent-white-bg {
+.white-background {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-.centered {
-    padding: 3rem;
+/**
+    Classes associated with the footer section.
+ */
+.footer__top {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
 }
 
-.centered-2 {
+.footer__img {
+    width: 12rem;
+    height: 100%;
+}
+
+.footer__row {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.text-centered {
-    padding: 6rem 3rem;
-}
-
-.white-text {
-    color: white;
-}
-
-.black-text {
-    color: black;
-}
-
-.top-margin-container {
-    margin-top: 20rem;
-}
-
-
-.small-logo {
-    width: 12rem;
+.footer__col__div {
+    width: 100%;
     height: 100%;
 }
 
+.footer--white-text {
+    color: white;
+}
 
-
-
-
+.footer__copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 0.13rem solid black;
+}
 
 
 .form-group {
