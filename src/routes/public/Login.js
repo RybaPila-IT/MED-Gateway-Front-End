@@ -1,11 +1,13 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 import {addHours} from "date-fns";
 import {useDispatch, useSelector} from "react-redux";
-import {login, userDataSessionKey} from '../../state/features/authentication'
-import {FaSignInAlt} from "react-icons/fa";
+import {login, userDataSessionKey} from "../../state/features/authentication";
 import {useLoginUserMutation} from "../../api/backend";
 import {AbsolutePaths} from "../Paths";
+import HandsWithGloves from "../../assets/HandsWithGloves.jpg";
+import DarkBlueLogo from "../../assets/DarkBlueLogo.png";
+
 
 function Login() {
 
@@ -17,7 +19,7 @@ function Login() {
         error,
         isSuccess,
         isError,
-        isLoading
+        isLoading,
     }] = useLoginUserMutation();
 
     const [formData, setFormData] = useState({
@@ -40,10 +42,11 @@ function Login() {
     }
 
     const resetForm = () => {
+        clearLoginError();
         setFormData({
             email: '',
             password: ''
-        })
+        });
     }
 
     const clearLoginError = () => {
@@ -119,64 +122,83 @@ function Login() {
 
     return authenticated ?
         <Navigate to={'/auth'}/> :
-        (<div>
-                <section className="centered-container" style={{display: 'flex', alignItems: 'center'}}>
-                    <h1>
-                        <FaSignInAlt/>Login
-                    </h1>
-                    <p>
-                        Provide your credentials in order to login.
-                    </p>
-                </section>
-                <form className="form centered-container" onSubmit={submitLoginRequest} onReset={resetForm}>
-                    <div className="form-group">
-                        <div className="mb-3">
-                            <input
-                                id="mailFormInput"
-                                type="email"
-                                className="form-control"
-                                onChange={onChange}
-                                required={true}
-                                name="email"
-                                value={email}
-                                placeholder="Please, enter your email"/>
+        (<>
+                <div className="form">
+                    <div className="row">
+                        <div className="col-6 form__col">
+                            <img className="form__side-img" src={HandsWithGloves} alt="Hands with gloves on"/>
                         </div>
-                        <div className="mb-3">
-                            <input
-                                id="passwordInput"
-                                type="password"
-                                className="form-control"
-                                onChange={onChange}
-                                required={true}
-                                minLength="5"
-                                name="password"
-                                value={password}
-                                placeholder="Please, enter your password"/>
-                        </div>
-                        <div className="btn-group">
-                            <button type="submit" className="btn btn-primary" disabled={isLoading}>Login</button>
-                            <button type="reset" className="btn btn-secondary" disabled={isLoading}>Clear</button>
+                        <div className="col-6 form__col d-flex justify-content-center">
+                            <div className="form__content">
+                                <div className="form__content__description">
+                                    <div>
+                                        <h1 className="form__content__header">Welcome back</h1>
+                                    </div>
+                                    <div className="form__content__paragraph">
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                </div>
+                                <form onSubmit={submitLoginRequest} onReset={resetForm}>
+                                    <div className="form__input-group">
+                                        <div className="mb-3">
+                                            <input
+                                                id="mailFormInput"
+                                                type="email"
+                                                className="form-control"
+                                                onChange={onChange}
+                                                required={true}
+                                                name="email"
+                                                value={email}
+                                                placeholder="Your email address"/>
+                                        </div>
+                                        <div className="mb-3">
+                                            <input
+                                                id="passwordInput"
+                                                type="password"
+                                                className="form-control"
+                                                onChange={onChange}
+                                                required={true}
+                                                minLength="5"
+                                                name="password"
+                                                value={password}
+                                                placeholder="Your password"/>
+                                        </div>
+                                        <div className="btn-group">
+                                            <button type="submit" className="btn btn-primary"
+                                                    disabled={isLoading}>Login
+                                            </button>
+                                            <button type="reset" className="btn btn-secondary"
+                                                    disabled={isLoading}>Clear
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div className="form__holder__logo">
+                                    {
+                                        isLoginError &&
+                                        <div className="alert alert-danger" role="alert">
+                                            {loginErrorMessage}
+                                        </div>
+                                    }
+                                    {
+                                        isLoading &&
+                                        <div>
+                                            <div className="spinner-border text-dark" role="status" style={{width: '10vh', height: '10vh'}}/>
+                                        </div>
+                                    }
+                                    {
+                                        !isLoading && !isLoginError &&
+                                        <img className="form__logo" src={DarkBlueLogo} alt="Logo of MED-Gateway system"/>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </form>
-                <section>
-                    <div className="centered-container">
-                        {
-                            isLoginError &&
-                            <div className="alert alert-danger" role="alert">
-                                {loginErrorMessage}
-                            </div>
-                        }
-                        {
-                            isLoading &&
-                            <div>
-                                <div className="spinner-border text-primary" role="status"/>
-                                <span className="text-primary">Loading...</span>
-                            </div>
-                        }
-                    </div>
-                </section>
-            </div>
+                </div>
+            </>
         )
 }
 

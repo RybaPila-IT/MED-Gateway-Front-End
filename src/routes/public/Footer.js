@@ -4,7 +4,7 @@ import {AbsolutePaths} from "../Paths";
 
 function Footer() {
     return (
-        <>
+        <div className="footer">
             <div className="footer__top black--background">
                 <div className="row footer__row">
                     <div className="col-4 d-flex justify-content-center">
@@ -56,7 +56,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
