@@ -129,15 +129,15 @@ function Login() {
                             <img className="form__side-img" src={HandsWithGloves} alt="Hands with gloves on"/>
                         </div>
                         <div className="col-6 form__col d-flex justify-content-center">
-                            <div className="form__content">
+                            <div className="form__content form--white-background">
                                 <div className="form__content__description">
                                     <div>
                                         <h1 className="form__content__header">Welcome back</h1>
                                     </div>
                                     <div className="form__content__paragraph">
                                         <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            Login, in order to use restricted functionalities of
+                                            the system. All of them are free of charge.
                                         </p>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@ function Login() {
                                     {
                                         isLoading &&
                                         <div>
-                                            <div className="spinner-border text-dark" role="status" style={{width: '10vh', height: '10vh'}}/>
+                                            <div className="spinner-border text-dark form__spinner-big" role="status"/>
                                         </div>
                                     }
                                     {

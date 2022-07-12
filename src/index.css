@@ -185,7 +185,6 @@ code {
     border-top: 0.13rem solid black;
 }
 
-
 .form {
     padding-left: 22rem;
     padding-right: 22rem;
@@ -200,14 +199,32 @@ code {
 .form__content {
     width: 100%;
     padding: 10% 5% 5% 5%;
+}
+
+.form__content-small-padded {
+    width: 100%;
+    padding: 5% 5% 5% 5%;
+}
+
+.form--white-background {
     background-color: white;
 }
+
+.form--dark-background {
+    background-color: #000000;
+}
+
+.form__content--white {
+    color: white;
+}
+
 
 .form__content__description {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .form__content__header {
     font-size: 2.6rem;
 }
@@ -230,10 +247,41 @@ code {
     align-items: center;
 }
 
+.form__holder__logo--small {
+    width: 100%;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form__logo {
     width: 50%;
 }
 
+.form__logo--small {
+    width: 30%;
+}
+
+.form__spinner-big {
+    width: 10vh;
+    height: 10vh;
+}
+
+.form__spinner-small {
+    width: 8vh;
+    height: 8vh;
+}
+
+.form__btn {
+    width: 50%;
+}
+
+.row__resend {
+    padding-left: 22rem;
+    padding-right: 22rem;
+    padding-top: 2vh;
+}
 
 .form__input-group {
     width: 100%;

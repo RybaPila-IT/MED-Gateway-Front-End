@@ -1,12 +1,11 @@
-import {FaUser} from 'react-icons/fa';
 import {useEffect, useState} from 'react';
 import {useRegisterUserMutation} from '../../api/backend';
 import {Link} from "react-router-dom";
 import {AbsolutePaths} from "../Paths";
+import Doors from "../../assets/Doors.jpg";
+import DarkBlueLogo from "../../assets/DarkBlueLogo.png";
 
 function Register() {
-
-    const passwordsMismatchErrorMessage = 'Provided passwords mismatch!';
 
     const [register, {
         data,
@@ -21,18 +20,18 @@ function Register() {
         surname: '',
         email: '',
         organization: '',
-        password: '',
-        passwordRepeat: ''
+        password: ''
     });
     const {
         name,
         surname,
         email,
         organization,
-        password,
-        passwordRepeat
+        password
     } = formData;
 
+    // TODO (radek.r) Think about nice way of handling isSuccess and isError
+    const [isClear, setIsClear] = useState(true);
     const [isRegisterError, setIsRegisterError] = useState(false);
     const [registerErrorMessage, setRegisterErrorMessage] = useState('');
 
@@ -46,6 +45,7 @@ function Register() {
     const clearRegistrationError = () => {
         setRegisterErrorMessage('');
         setIsRegisterError(false);
+        setIsClear(true);
     }
 
     const setErrorMessage = (errorMessage) => {
@@ -61,9 +61,7 @@ function Register() {
         e.preventDefault();
         // We do not want to have obsolete alerts while making new request.
         clearRegistrationError();
-        if (formData.password !== formData.passwordRepeat) {
-            return setErrorMessage(passwordsMismatchErrorMessage);
-        }
+        setIsClear(false);
         return register(formData);
     }
 
@@ -73,9 +71,10 @@ function Register() {
             surname: '',
             email: '',
             organization: '',
-            password: '',
-            passwordRepeat: ''
-        })
+            password: ''
+        });
+        setIsClear(true);
+        clearRegistrationError();
     }
 
     // This useEffect is responsible for setting the error message
@@ -98,120 +97,136 @@ function Register() {
     }, [isError, error]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
-        <div>
-            <section>
-                <h1>
-                    <FaUser/>Register
-                </h1>
-                <p>
-                    Please, fill below form in order to register.
-                </p>
-            </section>
-            <form className="form centered-container" onSubmit={submitRegisterRequest} onReset={resetForm}>
-                <div className="form-group">
-                    <div className="mb-3">
-                        <input
-                            id="nameInput"
-                            type="text"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            name="name"
-                            value={name}
-                            placeholder="Please, enter your name"/>
+        <>
+            <div className="form">
+                <div className="row">
+                    <div className="col-6 form__col">
+                        <img className="form__side-img" src={Doors} alt="Hands with gloves on"/>
                     </div>
-                    <div className="mb-3">
-                        <input
-                            id="surnameInput"
-                            type="text"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            name="surname"
-                            value={surname}
-                            placeholder="Please, enter your surname"/>
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            id="mailFormInput"
-                            type="email"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            name="email"
-                            value={email}
-                            placeholder="Please, enter your email"/>
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            id="organizationInput"
-                            type="text"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            name="organization"
-                            value={organization}
-                            placeholder="Please, enter your organization"/>
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            id="passwordInput"
-                            type="password"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            minLength="5"
-                            name="password"
-                            value={password}
-                            placeholder="Please, enter your password"/>
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            id="passwordRepeatInput"
-                            type="password"
-                            className="form-control"
-                            onChange={onChange}
-                            required={true}
-                            minLength="5"
-                            name="passwordRepeat"
-                            value={passwordRepeat}
-                            placeholder="Confirm password"/>
-                    </div>
-                    <div className="btn-group">
-                        <button type="submit" className="btn btn-primary" disabled={isLoading}>Register</button>
-                        <button type="reset" className="btn btn-secondary" disabled={isLoading}>Clear</button>
+                    <div className="col-6 form__col d-flex justify-content-center">
+                        <div className="form__content-small-padded form--white-background">
+                            <div className="form__content__description">
+                                <div>
+                                    <h1 className="form__content__header">Register</h1>
+                                </div>
+                                <div className="form__content__paragraph">
+                                    <p>
+                                        Fill in belows form in order to register to the system. Don't worry,
+                                        we will share your data with nobody.
+                                    </p>
+                                </div>
+                            </div>
+                            <form onSubmit={submitRegisterRequest} onReset={resetForm}>
+                                <div className="form__input-group">
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <div className="mb-3">
+                                                <input
+                                                    id="nameInput"
+                                                    type="text"
+                                                    className="form-control"
+                                                    onChange={onChange}
+                                                    required={true}
+                                                    name="name"
+                                                    value={name}
+                                                    placeholder="Your name"/>
+                                            </div>
+                                        </div>
+                                        <div className="col-6">
+                                            <div className="mb-3">
+                                                <input
+                                                    id="surnameInput"
+                                                    type="text"
+                                                    className="form-control"
+                                                    onChange={onChange}
+                                                    required={true}
+                                                    name="surname"
+                                                    value={surname}
+                                                    placeholder="Your surname"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="mb-3">
+                                        <input
+                                            id="mailFormInput"
+                                            type="email"
+                                            className="form-control"
+                                            onChange={onChange}
+                                            required={true}
+                                            name="email"
+                                            value={email}
+                                            placeholder="Your email"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <input
+                                            id="organizationInput"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={onChange}
+                                            required={true}
+                                            name="organization"
+                                            value={organization}
+                                            placeholder="Your organization"/>
+                                    </div>
+                                    <div className="mb-3">
+                                        <input
+                                            id="passwordInput"
+                                            type="password"
+                                            className="form-control"
+                                            onChange={onChange}
+                                            required={true}
+                                            minLength="5"
+                                            name="password"
+                                            value={password}
+                                            placeholder="Your password"/>
+                                    </div>
+                                    <div className="btn-group">
+                                        <button type="submit" className="btn btn-primary form__btn"
+                                                disabled={isLoading}>Register
+                                        </button>
+                                        <button type="reset" className="btn btn-secondary form__btn"
+                                                disabled={isLoading}>Clear
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div className="form__holder__logo--small">
+                                {
+                                    isRegisterError &&
+                                    <div className="alert alert-danger" role="alert">
+                                        {registerErrorMessage}
+                                    </div>
+                                }
+                                {
+                                    isLoading &&
+                                    <div>
+                                        <div className="spinner-border text-dark form__spinner-small" role="status"/>
+                                    </div>
+                                }
+                                {
+                                    isClear &&
+                                    <img className="form__logo--small" src={DarkBlueLogo}
+                                         alt="Logo of MED-Gateway system"/>
+                                }
+                                {isSuccess &&
+                                    <div className="alert alert-success align-content-center" role="alert">
+                                        {data.message}
+                                    </div>
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-            <section>
-                <div className="centered-container">
-                    {
-                        isRegisterError &&
-                        <div className="alert alert-danger" role="alert">
-                            {registerErrorMessage}
-                        </div>
-                    }
-                    {
-                        isLoading &&
-                        <div>
-                            <div className="spinner-border text-primary" role="status" />
-                            <span className="text-primary">Loading...</span>
-                        </div>
-                    }
-                    {
-                        isSuccess &&
-                        <div className="alert alert-success" role="alert">
-                            {data.message}
-                        </div>
-                    }
+            </div>
+            <div className="container">
+                <div className="row d-flex justify-content-center row__resend">
+                    <div className="col-7">
+                        Your verification email didn't come? Go
+                        <Link className="link" to={AbsolutePaths.verify}> here</Link>.
+                    </div>
                 </div>
-            </section>
-            <section>
-                <div>
-                    Your verification email didn't come? Go  <Link className="link" to={AbsolutePaths.verify}> here</Link> to resend it.
-                </div>
-            </section>
-        </div>
+            </div>
+        </>
     )
 }
 
