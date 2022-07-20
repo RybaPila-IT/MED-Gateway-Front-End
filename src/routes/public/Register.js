@@ -99,7 +99,7 @@ function Register() {
     return (
         <>
             <div className="form">
-                <div className="row">
+                <div className="row form--shadow">
                     <div className="col-6 form__col">
                         <img className="form__side-img" src={Doors} alt="Hands with gloves on"/>
                     </div>
@@ -222,7 +222,7 @@ function Register() {
                 <div className="row d-flex justify-content-center row__resend">
                     <div className="col-7">
                         Your verification email didn't come? Go
-                        <Link className="link" to={AbsolutePaths.verify}> here</Link>.
+                        <Link className="link" to={AbsolutePaths.resendMail}> here</Link>.
                     </div>
                 </div>
             </div>

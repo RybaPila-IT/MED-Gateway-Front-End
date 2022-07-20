@@ -13,7 +13,7 @@ import UseProduct from './protected/Product/Use'
 import Logout from "./protected/Logout";
 import ProtectedRoute from "./protected/ProtectedRoute";
 import HistoryList from "./protected/History/List";
-import Verify from "./public/Verify";
+import ResendMail from "./public/ResendMail";
 
 export default function Routing() {
     return (
@@ -23,7 +23,7 @@ export default function Routing() {
                 <Route index element={<PublicHome/>}/>
                 <Route path={RelativePaths.login} element={<Login/>}/>
                 <Route path={RelativePaths.register} element={<Register/>}/>
-                <Route path={RelativePaths.verify} element={<Verify/>}/>
+                <Route path={RelativePaths.resendMail} element={<ResendMail/>}/>
             </Route>
             {/* Start of the protected routes. */}
             <Route path={RelativePaths.authenticated} element={<ProtectedRoute/>}>

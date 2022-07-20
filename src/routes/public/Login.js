@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 import {addHours} from "date-fns";
+import Image from "react-bootstrap/Image";
 import {useDispatch, useSelector} from "react-redux";
 import {login, userDataSessionKey} from "../../state/features/authentication";
 import {useLoginUserMutation} from "../../api/backend";
@@ -124,9 +125,9 @@ function Login() {
         <Navigate to={'/auth'}/> :
         (<>
                 <div className="form">
-                    <div className="row">
+                    <div className="row form--shadow">
                         <div className="col-6 form__col">
-                            <img className="form__side-img" src={HandsWithGloves} alt="Hands with gloves on"/>
+                            <Image className="form__side-img" src={HandsWithGloves} alt="Hands with gloves on"/>
                         </div>
                         <div className="col-6 form__col d-flex justify-content-center">
                             <div className="form__content form--white-background">
