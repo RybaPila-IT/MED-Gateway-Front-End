@@ -1,11 +1,19 @@
+import {useNavigate} from "react-router-dom";
 import {useParams} from "react-router-dom";
 import {useGetProductDetailsQuery} from "../../../api/backend";
+import {AbsolutePaths} from "../../Paths";
 
 
 const ProductDetails = () => {
+    const navigate = useNavigate();
     const {productId} = useParams();
     const {data, error, isSuccess, isLoading, isError} = useGetProductDetailsQuery(productId);
     const imageURL = isSuccess ? data['photo_url'] : '';
+
+    const redirectToProductList = () => {
+        navigate(AbsolutePaths.products);
+    }
+
 
     return (
         <div>
@@ -33,10 +41,15 @@ const ProductDetails = () => {
                                 {data['full_description']}
                             </div>
                         </div>
+                        <button className="btn btn-secondary col-3" style={{
+                            marginTop: '2rem',
+                            display: 'block',
+                            marginLeft: 'auto',
+                            marginRight: 'auto'
+                        }} onClick={redirectToProductList}>
+                            Back
+                        </button>
                     </div>
-                    {/*<div>*/}
-                    {/*    <AdvancedImage cldImg={sampleImage} />*/}
-                    {/*</div>*/}
                 </div>
             }
             {

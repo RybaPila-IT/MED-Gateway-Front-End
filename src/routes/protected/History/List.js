@@ -24,7 +24,7 @@ const HistoryList = () => {
 
 
     return (
-        <div className="centered-container">
+        <div className="centered-container" style={{textAlign: 'center'}}>
             {isSuccess && data && data.entries &&
 
                 <table className="table table-striped table-hover">

@@ -329,6 +329,7 @@ code {
 .title-small {
     font-size: 1.5rem;
     margin: 0.5rem auto;
+    text-align: center;
 }
 
 .description-small {
@@ -341,11 +342,12 @@ code {
 }
 
 .image-small {
-    display: inline-block;
+    display: block;
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
     border: 2px black solid;
+    margin: auto;
 }
 
 /* Big elements styling. */
@@ -366,6 +368,7 @@ code {
 }
 
 .title-big {
+    text-align: center;
     font-size: 2rem;
     margin: 0.5rem auto;
 }
@@ -381,11 +384,12 @@ code {
 }
 
 .image-big {
-    display: inline-block;
+    display: block;
     width: 16rem;
     height: 16rem;
     border-radius: 50%;
     border: 2px black solid;
+    margin: auto;
 }
 
 .image-preview {
